@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">DishRecipes</string>
+    <string name="title_home">Главная</string>
+    <string name="title_dashboard">Панель</string>
+    <string name="title_notifications">Уведомления</string>
+    <string name="splash_screen_title">Dish Recipes</string>
+
+    <string name="add_dish">Добавить рецепт</string>
+
+
+
+    <string name="image_contentDescription">изображение</string>
+    <string name="lbl_title">Заголовок</string>
+    <string name="lbl_type">Тип</string>
+    <string name="lbl_category">Категория</string>
+    <string name="lbl_ingredients">Ингридиенты</string>
+    <string name="lbl_cooking_time_in_minutes">Время готовки в минутах</string>
+    <string name="lbl_direction_to_cook">Направление готовки</string>
+    <string name="lbl_add_dish">ДОБАВИТЬ РЕЦЕПТ</string>
+
+    <string name="title_select_image_action">Выберите действие с изображением</string>
+    <string name="lbl_camera">Камера</string>
+    <string name="lbl_gallery">Галерея</string>
+
+    <string name="title_select_dish_type">Выберите тип блюда</string>
+    <string name="title_select_dish_category">Выберите категорию блюда</string>
+    <string name="title_select_dish_cooking_time">Выберите время готовки в минутах</string>
+
+    <string name="err_msg_select_dish_image">Выберите фото блюда</string>
+    <string name="err_msg_select_dish_title">Введите название блюда</string>
+    <string name="err_msg_select_dish_type">Выберите тип блюда</string>
+    <string name="err_msg_select_dish_category">Выберите категорию блюда</string>
+    <string name="err_msg_select_dish_ingredients">Введите ингредиенты блюда</string>
+    <string name="err_msg_select_dish_cooking_time">Выберите время готовки блюда</string>
+    <string name="err_msg_select_dish_cooking_instructions">Введите инструкцию по приготовлению блюда</string>
+    <string name="label_no_dishes_added_yet">блюда ещё не добавлены</string>
+
+</resources>
