@@ -8,7 +8,6 @@
     <string name="add_dish">Добавить рецепт</string>
 
 
-
     <string name="image_contentDescription">изображение</string>
     <string name="lbl_title">Заголовок</string>
     <string name="lbl_type">Тип</string>
@@ -34,5 +33,8 @@
     <string name="err_msg_select_dish_cooking_time">Выберите время готовки блюда</string>
     <string name="err_msg_select_dish_cooking_instructions">Введите инструкцию по приготовлению блюда</string>
     <string name="label_no_dishes_added_yet">Блюда ещё не добавлены</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_dish_details">Детали блюда</string>
 
 </resources>
