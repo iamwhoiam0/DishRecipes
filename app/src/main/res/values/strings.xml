@@ -14,7 +14,7 @@
     <string name="lbl_category">Категория</string>
     <string name="lbl_ingredients">Ингридиенты</string>
     <string name="lbl_cooking_time_in_minutes">Время готовки в минутах</string>
-    <string name="lbl_direction_to_cook">Направление готовки</string>
+    <string name="lbl_direction_to_cook">Инструкция по приготовлению</string>
     <string name="lbl_add_dish">ДОБАВИТЬ РЕЦЕПТ</string>
 
     <string name="title_select_image_action">Выберите действие с изображением</string>
@@ -36,5 +36,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_dish_details">Детали блюда</string>
+    <string name="lbl_estimate_cooking_time">Приблизительное время, необходимое для приготовления блюда, составляет %1$s минут.</string>
 
 </resources>

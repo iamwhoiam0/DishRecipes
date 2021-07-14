@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:id="@+id/et_title"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/_15sdp"
                     android:textColor="@color/grey_900"
                     android:inputType="text"/>
 

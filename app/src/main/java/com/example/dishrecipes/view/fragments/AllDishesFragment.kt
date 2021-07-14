@@ -2,15 +2,17 @@ package com.example.dishrecipes.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dishrecipes.R
 import com.example.dishrecipes.application.FavDishApplication
 import com.example.dishrecipes.databinding.FragmentAllDishesBinding
+import com.example.dishrecipes.model.entities.FavDish
 import com.example.dishrecipes.view.activities.AddUpdateDishActivity
+import com.example.dishrecipes.view.activities.MainActivity
 import com.example.dishrecipes.view.adapters.FavDishAdapter
 import com.example.dishrecipes.viewmodel.FavDishViewModel
 import com.example.dishrecipes.viewmodel.FavDishViewModelFactory
@@ -33,7 +35,7 @@ class AllDishesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mBinding = FragmentAllDishesBinding.inflate(inflater,container,false)
             return mBinding.root
     }
@@ -60,6 +62,24 @@ class AllDishesFragment : Fragment() {
 
                     }
                 }
+        }
+    }
+
+    fun dishDetails(favDish: FavDish){
+        findNavController().navigate(AllDishesFragmentDirections.actionAllDishesToDishDetails(
+            favDish
+        ))
+
+        if (requireActivity() is MainActivity){
+            (activity as MainActivity?)?.hideBottomNavigationView()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (requireActivity() is MainActivity){
+            (activity as MainActivity?)?.showBottomNavigationView()
         }
     }
 
