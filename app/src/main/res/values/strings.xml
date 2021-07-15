@@ -33,9 +33,24 @@
     <string name="err_msg_select_dish_cooking_time">Выберите время готовки блюда</string>
     <string name="err_msg_select_dish_cooking_instructions">Введите инструкцию по приготовлению блюда</string>
     <string name="label_no_dishes_added_yet">Блюда ещё не добавлены</string>
+    <string name="label_no_favorite_dishes_added_yet">Избранные блюда ещё не добавлены</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_dish_details">Детали блюда</string>
     <string name="lbl_estimate_cooking_time">Приблизительное время, необходимое для приготовления блюда, составляет %1$s минут.</string>
+    <string name="action_edit_dish">Изменить блюдо</string>
+    <string name="action_delete_dish">Удалить блюдо</string>
+
+    <string name="title_add_dish">Добавить блюдо</string>
+    <string name="title_edit_dish">Изменить блюдо</string>
+    <string name="lbl_update_dish">Обновить блюдо</string>
+
+    <string name="title_delete_dish">Удалить блюдо</string>
+    <string name="lbl_yes">Да</string>
+    <string name="lbl_no">Нет</string>
+    <string name="msg_delete_dish_dialog">Вы уверены, что хотите удалить %1$s</string>
+
+    <string name="action_filter_dishes">Фильтр блюд</string>
+    <string name="title_select_item_to_filter">Выберите элемент фильтра</string>
 
 </resources>

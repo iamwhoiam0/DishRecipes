@@ -58,6 +58,8 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mCustomListDialog: Dialog
 
+    private var mFavDishDetails: FavDish? = null
+
     private val mFavDishViewModel: FavDishViewModel by viewModels{
         FavDishViewModelFactory((application as FavDishApplication).repository)
     }
@@ -67,7 +69,30 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
         mBinding = ActivityAddUpdateDishBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
+        if(intent.hasExtra(Constants.EXTRA_DISH_DETAILS)){
+            mFavDishDetails = intent.getParcelableExtra(Constants.EXTRA_DISH_DETAILS)
+        }
+
         setupActionBar()
+
+        mFavDishDetails?.let {
+            if(it.id != 0){
+                mImagePath = it.image
+                Glide.with(this@AddUpdateDishActivity)
+                    .load(mImagePath)
+                    .centerCrop()
+                    .into(mBinding.ivDishImage)
+
+                mBinding.etTitle.setText(it.title)
+                mBinding.etType.setText(it.type)
+                mBinding.etCategory.setText(it.category)
+                mBinding.etIngredients.setText(it.Ingredients)
+                mBinding.etCookingTime.setText(it.cookingTime)
+                mBinding.etDirectionToCook.setText(it.directionToCook)
+
+                mBinding.btnAddDish.text = resources.getString(R.string.lbl_update_dish)
+            }
+        }
 
         mBinding.ivAddDishImage.setOnClickListener(this)
 
@@ -82,6 +107,16 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
     // Добавляет элемент Toolbar
     private fun setupActionBar(){
         setSupportActionBar(mBinding.toolbarAddDishActivity)
+        if(mFavDishDetails != null && mFavDishDetails!!.id != 0){
+            supportActionBar?.let{
+                it.title = resources.getString(R.string.title_edit_dish)
+            }
+        }else{
+            supportActionBar?.let{
+                it.title = resources.getString(R.string.title_add_dish)
+            }
+        }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mBinding.toolbarAddDishActivity.setNavigationOnClickListener {
             onBackPressed()
@@ -178,24 +213,48 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
                         ).show()
                     }
                     else ->{
+                        var dishID = 0
+                        var imageSource = Constants.DISH_IMAGE_SOURCE_LOCAL
+                        var favoriteDish = false
+
+                        mFavDishDetails?.let {
+                            if(it.id != 0){
+                                dishID = it.id
+                                imageSource = it.imageSource
+                                favoriteDish = it.favoriteDish
+                            }
+                        }
+
                         val favDishDetails: FavDish = FavDish(
                             mImagePath,
-                            Constants.DISH_IMAGE_SOURCE_LOCAL,
+                            imageSource,
                             title,
                             type,
                             category,
                             ingredients,
                             cookingTimeInMinutes,
                             cookingDirection,
-                            false
+                            favoriteDish,
+                            dishID
                         )
-                        mFavDishViewModel.insert(favDishDetails)
-                        Toast.makeText(
-                            this@AddUpdateDishActivity,
-                            "Вы успешно добавили ваше блюдо",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        Log.e("Insertion", "Success")
+
+                        if(dishID == 0){
+                            mFavDishViewModel.insert(favDishDetails)
+                            Toast.makeText(
+                                this@AddUpdateDishActivity,
+                                "Вы успешно добавили ваше блюдо",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Log.i("Insertion", "Success")
+                        }else{
+                            mFavDishViewModel.update(favDishDetails)
+                            Toast.makeText(
+                                this@AddUpdateDishActivity,
+                                "Вы успешно изменили ваше блюдо",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Log.e("Updating", "Success")
+                        }
                         finish()
                     }
                 }
@@ -414,7 +473,7 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.rvList.layoutManager = LinearLayoutManager(this)
 
-        val adapter = CustomListItemAdapter(this, itemsList, selection)
+        val adapter = CustomListItemAdapter(this, null ,itemsList, selection)
         binding.rvList.adapter = adapter
         mCustomListDialog.show()
 
