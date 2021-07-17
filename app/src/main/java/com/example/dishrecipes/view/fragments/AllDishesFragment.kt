@@ -24,6 +24,8 @@ import com.example.dishrecipes.view.adapters.FavDishAdapter
 import com.example.dishrecipes.viewmodel.FavDishViewModel
 import com.example.dishrecipes.viewmodel.FavDishViewModelFactory
 
+
+
 class AllDishesFragment : Fragment() {
 
     private lateinit var mBinding: FragmentAllDishesBinding

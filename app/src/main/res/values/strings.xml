@@ -52,5 +52,9 @@
 
     <string name="action_filter_dishes">Фильтр блюд</string>
     <string name="title_select_item_to_filter">Выберите элемент фильтра</string>
+    <string name="msg_added_to_favorites">Блюдо добавлено в избранное</string>
+
+    <string name="msg_already_added_to_favorites">вы уже добавили блюдо в избранное</string>
+    <string name="please_wait">Пожалуйста, подождите!</string>
 
 </resources>

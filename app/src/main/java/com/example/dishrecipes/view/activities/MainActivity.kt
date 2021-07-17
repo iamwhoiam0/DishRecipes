@@ -1,6 +1,7 @@
 package com.example.dishrecipes.view.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        mNavController = findNavController(R.id.nav_host_fragment_activity_main)
+        mNavController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
@@ -42,11 +43,13 @@ class MainActivity : AppCompatActivity() {
     fun hideBottomNavigationView(){
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(mBinding.navView.height.toFloat()).duration = 300
+        mBinding.navView.visibility = View.GONE
     }
 
     fun showBottomNavigationView(){
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(0f).duration = 300
+        mBinding.navView.visibility = View.VISIBLE
     }
 
 }
