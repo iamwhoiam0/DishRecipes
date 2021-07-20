@@ -56,5 +56,9 @@
 
     <string name="msg_already_added_to_favorites">вы уже добавили блюдо в избранное</string>
     <string name="please_wait">Пожалуйста, подождите!</string>
+    <string name="action_share_dish">Поделиться блюдом</string>
+
+    <string name="notification_title">Проверьте новый рецепт блюда</string>
+    <string name="notification_subtitle">Нажмите чтобы узнать больше подробностей</string>
 
 </resources>

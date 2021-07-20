@@ -3,14 +3,19 @@ package com.example.dishrecipes.view.activities
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.solver.state.State
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.*
 import com.example.dishrecipes.R
 import com.example.dishrecipes.databinding.ActivityMainBinding
+import com.example.dishrecipes.model.notification.NotifyWorker
+import com.example.dishrecipes.utils.Constants
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +39,32 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(mNavController, appBarConfiguration)
         mBinding.navView.setupWithNavController(mNavController)
+
+        if(intent.hasExtra(Constants.NOTIFICATION_ID)){
+            val notificationId = intent.getIntExtra(Constants.NOTIFICATION_ID, 0)
+            mBinding.navView.selectedItemId = R.id.navigation_random_dish
+        }
+
+        startWork()
+    }
+
+    private fun createConstraints() = Constraints.Builder()
+        .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+        .setRequiresCharging(false)
+        .setRequiresBatteryNotLow(true)
+        .build()
+
+    private fun createWorkRequest() = PeriodicWorkRequestBuilder<NotifyWorker>(15,TimeUnit.MINUTES)
+        .setConstraints(createConstraints())
+        .build()
+
+    private fun startWork(){
+        WorkManager.getInstance(this)
+            .enqueueUniquePeriodicWork(
+                "DishRecipes Notify Wokr",
+                ExistingPeriodicWorkPolicy.KEEP,
+                createWorkRequest()
+            )
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -26,9 +26,13 @@ object Constants {
     const val BASE_URL = "https://api.spoonacular.com/"
 
     const val LIMIT_LICENSE_VALUE: Boolean = true
-    const val TAGS_VALUE: String = "vegetarian, dessert"
+    const val TAGS_VALUE: String = "vegetarian"
     const val NUMBER_VALUE: Int = 1
     const val API_KEY_VALUE: String = "b845dbf066784078a09013986731fa98"
+
+    const val  NOTIFICATION_ID = "DishRecipes_notification_id"
+    const val NOTIFICATION_NAME = "DishRecipes"
+    const val NOTIFICATION_CHANNEL = "DishRecipes_channel_01"
 
     fun dishTypes():ArrayList<String>{
         val list = ArrayList<String>()
